@@ -50,10 +50,20 @@
                 <output class="salary-output" for="salary">400000</output>
             </div>
             <div>
-                <button onsubmit='console.log("Form Submitted");'>Submit</button>
+                <button onsubmit='console.log("Submitted Successfully");'>Submit</button>
             </div>
         </form>
         <script>
+            const email = document.querySelector('#email');
+            const emailError = document.querySelector('.email-error');
+            email.addEventListener('input', function() {
+                let emailRegex = RegExp("^[a-zA-Z0-9+_-]+([.][a-zA-Z0-9]+)*@([a-zA-Z0-9]+)([.][a-z]+)?[.][a-z]{2,}$");
+                if(emailRegex.test(email.value))
+                    emailError.textContent = " ";
+                else
+                    emailError.textContent = "Incorrect Email!";
+            });
+
             const textName = document.querySelector('#text');
             const textError = document.querySelector('.text-error');
             textName.addEventListener('input', function() {
